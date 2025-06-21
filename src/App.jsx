@@ -13,7 +13,11 @@ import Notfound from './components/Notfound/Notfound'
 const routers = createBrowserRouter([
   {
     path: '/', 
-    element: <Layout />, 
+    element: (
+      <AuthProvider>
+        <Layout />
+      </AuthProvider>
+    ),
     children: [
       { index: true, element: <Home /> },
       { path: 'form', element: <Form /> },
@@ -24,7 +28,7 @@ const routers = createBrowserRouter([
     element: <Login />
   },
   {
-    path: '/allschools', 
+    path: '/schools', 
     element: (
       <ProtectedRoute>
         <Schools />
