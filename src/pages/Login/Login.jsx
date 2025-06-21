@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { object, string } from 'yup';
 import logo from '../../assets/images/evaazlogo.webp';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ThreeDots } from 'react-loader-spinner';
 import { useAuth } from '../../contexts/AuthContext';
 import axios from 'axios';
@@ -10,8 +10,16 @@ import { useNavigate } from 'react-router-dom';
 export default function Login() {
   const [apiError, setApiError] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const { login } = useAuth();
+  const { login, isAuthenticated, loading } = useAuth();
   const navigate = useNavigate();
+
+  // Redirect to /schools if already authenticated or token exists
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!loading && (isAuthenticated || token)) {
+      navigate('/schools', { replace: true });
+    }
+  }, [isAuthenticated, loading, navigate]);
 
   async function handleLogin(values) {
     setIsLoading(true);
@@ -26,8 +34,6 @@ export default function Login() {
         login(data.results.user || data.results, token);
         console.log('Login response:', data);
         console.log('Navigating to /schools...');
-
-        navigate('/schools');
       } else {
         setApiError('لم يتم استلام رمز المصادقة أو أن بنية الاستجابة غير متوقعة');
       }
