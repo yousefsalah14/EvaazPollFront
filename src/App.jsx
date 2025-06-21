@@ -24,7 +24,7 @@ const routers = createBrowserRouter([
     element: <Login />
   },
   {
-    path: '/schools', 
+    path: '/allschools', 
     element: (
       <ProtectedRoute>
         <Schools />

@@ -27,7 +27,7 @@ export default function Login() {
         console.log('Login response:', data);
         console.log('Navigating to /schools...');
 
-        navigate('/schools'); // Redirect to schools page after login
+        navigate('/allschools'); // Redirect to schools page after login
       } else {
         setApiError('لم يتم استلام رمز المصادقة أو أن بنية الاستجابة غير متوقعة');
       }
