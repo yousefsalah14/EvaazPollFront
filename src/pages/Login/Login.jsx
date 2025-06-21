@@ -25,17 +25,30 @@ export default function Login() {
       setLoading(true);
       setApiError(null);
       const { data } = await axios.post('https://evaaz-poll-hqzi.vercel.app/api/auth/login', values);
+      console.log('API response:', data);
       const token = data.results?.token;
       if (data.success && token) {
-        localStorage.setItem('token', token);
-        setToken(token);
-        navigate('/schools');
+        try {
+          localStorage.setItem('token', token);
+          if (typeof setToken === 'function') {
+            setToken(token);
+          } else {
+            console.error('setToken is not a function:', setToken);
+            setApiError('خطأ داخلي في التطبيق (setToken)');
+            return;
+          }
+          console.log('Token set, navigating...');
+          navigate('/schools');
+        } catch (navErr) {
+          console.error('Navigation or setToken error:', navErr);
+          setApiError('خطأ أثناء الانتقال أو حفظ التوكن');
+        }
       } else {
         setApiError('لم يتم استلام رمز المصادقة أو أن بنية الاستجابة غير متوقعة');
       }
     } catch (error) {
       setApiError(error?.response?.data?.message || 'حدث خطأ ما');
-      console.log(error);
+      console.log('Login error:', error);
     } finally {
       setLoading(false);
     }
