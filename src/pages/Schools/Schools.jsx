@@ -156,17 +156,17 @@ export default function Schools() {
       {/* Header */}
       <div className="bg-white dark:bg-gray-800 shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-4 space-x-reverse">
-              <FaSchool className="text-3xl text-blue-600" />
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center py-6 gap-4 md:gap-0">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-4 sm:space-x-reverse">
+              <FaSchool className="text-3xl text-blue-600 mb-2 sm:mb-0" />
               <div>
-                <h1 className="text-2xl font-bold text-gray-900 dark:text-white">إدارة المدارس</h1>
-                <p className="text-gray-600 dark:text-gray-300">عرض وإدارة جميع المدارس المسجلة</p>
+                <h1 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">إدارة المدارس</h1>
+                <p className="text-gray-600 dark:text-gray-300 text-sm sm:text-base">عرض وإدارة جميع المدارس المسجلة</p>
               </div>
             </div>
             <button
               onClick={handleLogout}
-              className="flex items-center space-x-2 space-x-reverse bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors"
+              className="flex items-center space-x-2 space-x-reverse bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors w-full md:w-auto justify-center"
             >
               <FaSignOutAlt />
               <span>تسجيل الخروج</span>
@@ -175,12 +175,12 @@ export default function Schools() {
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <div className="max-w-full sm:max-w-7xl mx-auto px-2 sm:px-4 lg:px-8 py-4 sm:py-8">
         {/* Search Section */}
-        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-4 sm:p-6 mb-8">
           <div className="flex items-center space-x-3 space-x-reverse mb-6">
             <FaSearch className="text-xl text-blue-600" />
-            <h2 className="text-xl font-semibold text-gray-900 dark:text-white">البحث في المدارس</h2>
+            <h2 className="text-lg sm:text-xl font-semibold text-gray-900 dark:text-white">البحث في المدارس</h2>
           </div>
           
           <form onSubmit={handleSearch} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -254,7 +254,7 @@ export default function Schools() {
               />
             </div>
             
-            <div className="flex items-end space-x-3 space-x-reverse">
+            <div className="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-3 mt-2 sm:mt-0 col-span-1 md:col-span-2 lg:col-span-3">
               <button
                 type="submit"
                 disabled={searchLoading}
@@ -269,7 +269,7 @@ export default function Schools() {
               <button
                 type="button"
                 onClick={handleReset}
-                className="bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors"
+                className="flex-1 bg-gray-500 hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors"
               >
                 إعادة تعيين
               </button>
@@ -280,45 +280,46 @@ export default function Schools() {
         {/* Error Message */}
         {error && (
           <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4 mb-6">
-            <p className="text-red-700 dark:text-red-300 text-center">{error}</p>
+            <p className="text-red-700 dark:text-red-300 text-center text-sm sm:text-base">{error}</p>
           </div>
         )}
 
         {/* Results Header */}
-        <div className="flex justify-between items-center mb-6">
-          <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-2 sm:gap-0">
+          <h3 className="text-base sm:text-lg font-semibold text-gray-900 dark:text-white">
             {searchMode ? 'نتائج البحث' : 'جميع المدارس'}
           </h3>
-          <span className="text-sm text-gray-600 dark:text-gray-300">
+          <span className="text-xs sm:text-sm text-gray-600 dark:text-gray-300">
             {filteredSchools.length} مدرسة
           </span>
         </div>
 
         {/* Schools Grid */}
+        <div className="overflow-x-auto">
         {filteredSchools.length === 0 ? (
           <div className="text-center py-12">
             <FaSchool className="mx-auto text-6xl text-gray-400 mb-4" />
-            <h3 className="text-lg font-medium text-gray-900 dark:text-white mb-2">
+            <h3 className="text-base sm:text-lg font-medium text-gray-900 dark:text-white mb-2">
               لا توجد مدارس
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-base">
               {searchMode ? 'لا توجد نتائج مطابقة لمعايير البحث' : 'لم يتم العثور على مدارس مسجلة'}
             </p>
           </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-8">
             {filteredSchools.map((school) => {
               return(
                 <div
                   key={school._id}
                   className="bg-white dark:bg-gray-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col transform hover:-translate-y-1"
                 >
-                  <div className="p-6 flex-grow">
+                  <div className="p-4 sm:p-6 flex-grow">
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-4 gap-2 sm:gap-0">
                       <div className="flex items-center space-x-3 space-x-reverse">
-                        <FaSchool className="text-3xl text-blue-600" />
-                        <h4 className="text-lg font-bold text-gray-900 dark:text-white">
+                        <FaSchool className="text-2xl sm:text-3xl text-blue-600" />
+                        <h4 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">
                           {school.schoolName || 'اسم المدرسة غير متوفر'}
                         </h4>
                       </div>
@@ -326,8 +327,8 @@ export default function Schools() {
 
                     {/* Contact Info */}
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-4">
-                      <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 text-sm">معلومات التواصل</h5>
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-sm text-gray-600 dark:text-gray-300">
+                      <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 text-xs sm:text-sm">معلومات التواصل</h5>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs sm:text-sm text-gray-600 dark:text-gray-300">
                         <div className="flex items-center space-x-2 space-x-reverse"><FaMapMarkerAlt className="text-gray-400" /> <span>{school.city || '-'}</span></div>
                         <div className="flex items-center space-x-2 space-x-reverse"><FaUser className="text-gray-400" /> <span>{school.contractManagerName || '-'}</span></div>
                         <div className="flex items-center space-x-2 space-x-reverse"><FaPhone className="text-gray-400" /> <span>{school.phoneNumber || '-'}</span></div>
@@ -342,22 +343,22 @@ export default function Schools() {
                     
                     {/* Student Counts */}
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-4 mb-4">
-                      <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 text-sm">
+                      <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2 text-xs sm:text-sm">
                         تعداد الطلبة حسب بيانات هذا العام الدراسي وذلك لتوفير عدد المدربين من افاز
                       </h5>
                       <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-xs text-gray-500 dark:text-gray-400">
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.kindergartenStudents ?? 0}</div><div>روضة</div></div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.primary1to4Students ?? 0}</div><div>ابتدائي (1-4)</div></div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.primary5to6Students ?? 0}</div><div>ابتدائي (5-6)</div></div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.intermediate1to2Students ?? 0}</div><div>متوسط (1-2)</div></div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.intermediate3Students ?? 0}</div><div>متوسط (3)</div></div>
-                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-base text-gray-800 dark:text-white">{school.secondaryStudents ?? 0}</div><div>ثانوي</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.kindergartenStudents ?? 0}</div><div>روضة</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.primary1to4Students ?? 0}</div><div>ابتدائي (1-4)</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.primary5to6Students ?? 0}</div><div>ابتدائي (5-6)</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.intermediate1to2Students ?? 0}</div><div>متوسط (1-2)</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.intermediate3Students ?? 0}</div><div>متوسط (3)</div></div>
+                        <div className="p-2 bg-gray-50 dark:bg-gray-700/80 rounded-lg text-center"><div className="font-bold text-sm sm:text-base text-gray-800 dark:text-white">{school.secondaryStudents ?? 0}</div><div>ثانوي</div></div>
                       </div>
                     </div>
                     
                     {/* Facilities & Documents */}
                     <div className="border-t border-gray-200 dark:border-gray-700 pt-4">
-                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs sm:text-sm">
                         <div>
                           <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2">المرافق</h5>
                           <div className="space-y-2">
@@ -367,12 +368,12 @@ export default function Schools() {
                         </div>
                         <div>
                           <h5 className="font-semibold text-gray-700 dark:text-gray-200 mb-2">المستندات</h5>
-                          <div className="flex items-center space-x-2 rtl:space-x-reverse mt-2">
+                          <div className="flex flex-col sm:flex-row items-stretch gap-2 sm:gap-2 rtl:space-x-reverse mt-2">
                             <a 
                               href={school.commercialRegistration?.url} 
                               target="_blank" 
                               rel="noopener noreferrer" 
-                              className="flex-1 text-center bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/60 font-medium py-2 px-3 rounded-lg transition-colors text-sm"
+                              className="flex-1 text-center bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/60 font-medium py-2 px-3 rounded-lg transition-colors text-xs sm:text-sm"
                             >
                               السجل التجاري
                             </a>
@@ -380,7 +381,7 @@ export default function Schools() {
                               href={school.contractManagerId?.url} 
                               target="_blank" 
                               rel="noopener noreferrer" 
-                              className="flex-1 text-center bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/60 font-medium py-2 px-3 rounded-lg transition-colors text-sm"
+                              className="flex-1 text-center bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-300 hover:bg-blue-200 dark:hover:bg-blue-900/60 font-medium py-2 px-3 rounded-lg transition-colors text-xs sm:text-sm"
                             >
                               هوية المدير
                             </a>
@@ -391,8 +392,8 @@ export default function Schools() {
                   </div>
 
                   {/* Footer with Timestamps */}
-                  <div className="bg-gray-50 dark:bg-gray-900/50 px-6 py-2 text-xs text-gray-500 dark:text-gray-400 mt-auto">
-                    <div className="flex justify-between items-center">
+                  <div className="bg-gray-50 dark:bg-gray-900/50 px-4 sm:px-6 py-2 text-xs text-gray-500 dark:text-gray-400 mt-auto">
+                    <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-1 sm:gap-0">
                       <span>أنشئ: {new Date(school.createdAt).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                       <span>آخر تحديث: {new Date(school.updatedAt).toLocaleDateString('ar-EG', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
                     </div>
@@ -402,6 +403,7 @@ export default function Schools() {
             })}
           </div>
         )}
+        </div>
       </div>
     </div>
   );
