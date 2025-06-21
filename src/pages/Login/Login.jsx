@@ -35,7 +35,7 @@ export default function Login() {
       const token = data.results?.token;
 
       // Save token and user data
-      if (token) {
+      if (data.result.success) {
         login(data.results.user || data.results, token);
         console.log('Login response:', data);
         console.log('Navigating to /schools...');
