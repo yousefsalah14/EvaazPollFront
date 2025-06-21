@@ -172,7 +172,7 @@ export default function Form() {
                         {formik.errors.email && formik.touched.email && <div className="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{formik.errors.email}</div>}
                     </div>
                     <div>
-                        <label htmlFor="hasComputerLab" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">هل يوجد معمل حاسب آلي؟</label>
+                        <label htmlFor="hasComputerLab" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">هل توجد معامل حاسب آلي تغطي المراحل الدراسية ؟</label>
                         <select id="hasComputerLab" name="hasComputerLab" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.hasComputerLab} className="focus:outline-primary bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="">اختر</option>
                             <option value="نعم">نعم</option>
@@ -181,7 +181,7 @@ export default function Form() {
                         {formik.errors.hasComputerLab && formik.touched.hasComputerLab && <div className="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert">{formik.errors.hasComputerLab}</div>}
                     </div>
                     <div>
-                        <label htmlFor="hasInternet" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">هل يوجد انترنت في المدرسة؟</label>
+                        <label htmlFor="hasInternet" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-100">هل خدمة الانترنت متوفرة في معامل الحاسب الآلي؟</label>
                         <select id="hasInternet" name="hasInternet" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.hasInternet} className="focus:outline-primary bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                             <option value="">اختر</option>
                             <option value="نعم">نعم</option>
@@ -191,7 +191,7 @@ export default function Form() {
                     </div>
                     {/* Title before student numbers */}
                     <div className="col-span-full">
-                        <h5 className="text-xl font-bold text-primary dark:text-gray-100 mb-2">
+                        <h5 className="font-bold text-[100px] text-gray-700 dark:!text-primary mb-2  sm:text-sm">
                             تعداد الطلبة حسب بيانات هذا العام الدراسي وذلك لتوفير عدد المدربين من افاز
                         </h5>
                     </div>

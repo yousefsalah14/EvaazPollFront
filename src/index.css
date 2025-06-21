@@ -2,7 +2,53 @@
 @tailwind components;
 @tailwind utilities;
 
+html.dark {
+  background-color: #18181b;
+}
+body.dark {
+  background-color: #18181b;
+}
 
+/* Make all backgrounds dark by default in dark mode */
+.dark .bg-white,
+.dark .bg-gray-50,
+.dark .bg-base-color {
+  background-color: #18181b !important;
+}
+
+/* Make all cards and forms dark by default in dark mode */
+.dark .shadow-xl,
+.dark .rounded-xl,
+.dark .rounded-2xl,
+.dark .shadow-2xl {
+  background-color: #23232a !important;
+}
+
+/* Make all text light in dark mode */
+.dark,
+.dark * {
+  color: #f3f7fa !important;
+}
+
+/* But keep input fields and labels light on dark backgrounds */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #23232a !important;
+  color: #f3f7fa !important;
+  border-color: #444 !important;
+}
+
+.dark label,
+.dark .text-gray-900,
+.dark .font-medium {
+  color: #f3f7fa !important;
+}
+
+/* Make placeholder text lighter in dark mode */
+.dark ::placeholder {
+  color: #b0b0b0 !important;
+}
 
 /* Ubuntu Fonts */
 @font-face {
