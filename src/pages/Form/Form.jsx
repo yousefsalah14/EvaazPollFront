@@ -240,7 +240,7 @@ export default function Form() {
                             accept="image/png,image/jpeg,image/jpg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             onBlur={formik.handleBlur} 
                             onChange={e => handleFileUpload(e, 'commercialRegistration', setCommercialRegPreview)} 
-                            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-primary" 
+                            className="block w-full text-base sm:text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-primary" 
                         />
                         {commercialRegPreview && (
                             <div className="mt-2">
@@ -261,7 +261,7 @@ export default function Form() {
                             accept="image/png,image/jpeg,image/jpg,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
                             onBlur={formik.handleBlur} 
                             onChange={e => handleFileUpload(e, 'contractManagerId', setManagerIdPreview)} 
-                            className="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-primary" 
+                            className="block w-full text-base sm:text-lg text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-primary" 
                         />
                         {managerIdPreview && (
                             <div className="mt-2">
