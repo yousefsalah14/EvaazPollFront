@@ -97,21 +97,21 @@ export default function Form() {
     }
 
     const validationSchema = object({
-        schoolName: string().required('اسم المدرسة مطلوب'),
-        city: string().required('المدينة مطلوبة'),
-        contractManagerName: string().required('اسم المسؤول مطلوب'),
-        phoneNumber: string().matches(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الجوال غير صحيح').required('رقم الجوال مطلوب'),
-        email: string().email('البريد الإلكتروني غير صحيح').required('البريد الإلكتروني مطلوب'),
-        kindergartenStudents: number().typeError('عدد الطلاب في الروضة يجب أن يكون رقم').required('مطلوب'),
-        primary1to4Students: number().typeError('عدد الطلبة سنة اولى الى رابع ابتدائي يجب أن يكون رقم').required('مطلوب'),
-        primary5to6Students: number().typeError('عدد الطلبة سنة خامس وسادس ابتدائي يجب أن يكون رقم').required('مطلوب'),
-        intermediate1to2Students: number().typeError('عدد الطلبة سنة اولى وثاني متوسطة يجب أن يكون رقم').required('مطلوب'),
-        intermediate3Students: number().typeError('عدد الطلبة سنة ثالث متوسطة يجب أن يكون رقم').required('مطلوب'),
-        secondaryStudents: number().typeError('عدد الطلاب للمرحلة الثانوية يجب أن يكون رقم').required('مطلوب'),
-        hasComputerLab: string().required('هذا الحقل مطلوب'),
-        hasInternet: string().required('هذا الحقل مطلوب'),
-        commercialRegistration: mixed().required('السجل التجاري مطلوب'),
-        contractManagerId: mixed().required('هوية المسؤول مطلوبة'),
+        schoolName: string(),
+        city: string(),
+        contractManagerName: string(),
+        phoneNumber: string().matches(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الجوال غير صحيح'),
+        email: string().email('البريد الإلكتروني غير صحيح'),
+        kindergartenStudents: number().typeError('عدد الطلاب في الروضة يجب أن يكون رقم'),
+        primary1to4Students: number().typeError('عدد الطلبة سنة اولى الى رابع ابتدائي يجب أن يكون رقم'),
+        primary5to6Students: number().typeError('عدد الطلبة سنة خامس وسادس ابتدائي يجب أن يكون رقم'),
+        intermediate1to2Students: number().typeError('عدد الطلبة سنة اولى وثاني متوسطة يجب أن يكون رقم'),
+        intermediate3Students: number().typeError('عدد الطلبة سنة ثالث متوسطة يجب أن يكون رقم'),
+        secondaryStudents: number().typeError('عدد الطلاب للمرحلة الثانوية يجب أن يكون رقم'),
+        hasComputerLab: string(),
+        hasInternet: string(),
+        commercialRegistration: mixed(),
+        contractManagerId: mixed(),
     })
 
     const formik = useFormik({
@@ -189,8 +189,8 @@ export default function Form() {
                         <label htmlFor="hasInternet" className="block mb-2 text-base sm:text-lg font-semibold text-gray-900 dark:text-gray-100">هل خدمة الانترنت متوفرة في معامل الحاسب الآلي؟</label>
                         <select id="hasInternet" name="hasInternet" onBlur={formik.handleBlur} onChange={formik.handleChange} value={formik.values.hasInternet} className="focus:outline-primary bg-gray-50 border border-gray-300 text-gray-900 text-base sm:text-lg rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-3">
                             <option value="">اختر</option>
-                            <option value="true">نعم</option>
-                            <option value="false">لا</option>
+                            <option value="نعم">نعم</option>
+                            <option value="لا">لا</option>
                         </select>
                         {formik.errors.hasInternet && formik.touched.hasInternet && <div className="mt-2 p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-red-900/40 dark:text-white" role="alert">{formik.errors.hasInternet}</div>}
                     </div>
