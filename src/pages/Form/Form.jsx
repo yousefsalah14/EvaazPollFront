@@ -97,10 +97,10 @@ export default function Form() {
     }
 
     const validationSchema = object({
-        schoolName: string(),
-        city: string(),
-        contractManagerName: string(),
-        phoneNumber: string().matches(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الجوال غير صحيح'),
+        schoolName: string().required('اسم المدرسة مطلوب'),
+        city: string().required('المدينة مطلوبة'),
+        contractManagerName: string().required('اسم المسؤول مطلوب'),
+        phoneNumber: string().matches(/^(05|5)(5|0|3|6|4|9|1|8|7)([0-9]{7})$/, 'رقم الجوال غير صحيح').required('رقم الجوال مطلوب'),
         email: string().email('البريد الإلكتروني غير صحيح'),
         kindergartenStudents: number().typeError('عدد الطلاب في الروضة يجب أن يكون رقم'),
         primary1to4Students: number().typeError('عدد الطلبة سنة اولى الى رابع ابتدائي يجب أن يكون رقم'),
@@ -108,10 +108,10 @@ export default function Form() {
         intermediate1to2Students: number().typeError('عدد الطلبة سنة اولى وثاني متوسطة يجب أن يكون رقم'),
         intermediate3Students: number().typeError('عدد الطلبة سنة ثالث متوسطة يجب أن يكون رقم'),
         secondaryStudents: number().typeError('عدد الطلاب للمرحلة الثانوية يجب أن يكون رقم'),
-        hasComputerLab: string(),
-        hasInternet: string(),
-        commercialRegistration: mixed(),
-        contractManagerId: mixed(),
+        hasComputerLab: string().required('هذا الحقل مطلوب'),
+        hasInternet: string().required('هذا الحقل مطلوب'),
+        commercialRegistration: mixed().required('السجل التجاري مطلوب'),
+        contractManagerId: mixed().required('هوية المسؤول مطلوبة'),
     })
 
     const formik = useFormik({
