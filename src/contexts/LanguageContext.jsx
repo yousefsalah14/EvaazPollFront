@@ -76,7 +76,7 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('evaaz-language', language)
     document.documentElement.lang = language
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
-    document.title = language === 'ar' ? 'إيفاز | تسجيل المدارس' : 'Evaaz | School registration'
+    document.title = language === 'ar' ? 'تسجيل البيانات للمشرفيين' : 'Supervisor data registration'
   }, [language])
 
   return <LanguageContext.Provider value={{ language, setLanguage, t: (key) => messages[language][key] || key }}>{children}</LanguageContext.Provider>
