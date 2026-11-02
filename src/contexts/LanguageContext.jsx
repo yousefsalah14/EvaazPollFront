@@ -68,6 +68,11 @@ const messages = {
   },
 }
 
+const pageMetadata = {
+  ar: { title: 'تسجيل البيانات للمشرفيين', description: 'سجّل بيانات المشرفيين والمدارس والفروع للتواصل مع فريق إيفاز.', locale: 'ar_SA' },
+  en: { title: 'Supervisor data registration', description: 'Register supervisor, school, and branch details so the Evaaz team can contact you.', locale: 'en_US' },
+}
+
 const LanguageContext = createContext(null)
 
 export function LanguageProvider({ children }) {
@@ -76,7 +81,17 @@ export function LanguageProvider({ children }) {
     localStorage.setItem('evaaz-language', language)
     document.documentElement.lang = language
     document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr'
-    document.title = language === 'ar' ? 'تسجيل البيانات للمشرفيين' : 'Supervisor data registration'
+    const metadata = pageMetadata[language]
+    document.title = metadata.title
+    for (const [selector, value] of [
+      ['meta[name="application-name"]', metadata.title],
+      ['meta[name="description"]', metadata.description],
+      ['meta[property="og:locale"]', metadata.locale],
+      ['meta[property="og:title"]', metadata.title],
+      ['meta[property="og:description"]', metadata.description],
+      ['meta[name="twitter:title"]', metadata.title],
+      ['meta[name="twitter:description"]', metadata.description],
+    ]) document.querySelector(selector)?.setAttribute('content', value)
   }, [language])
 
   return <LanguageContext.Provider value={{ language, setLanguage, t: (key) => messages[language][key] || key }}>{children}</LanguageContext.Provider>
