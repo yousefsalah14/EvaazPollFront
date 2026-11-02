@@ -1,4 +1,5 @@
 import { createContext, useContext } from 'react';
+import PropTypes from 'prop-types';
 
 // Create the context
 const CountdownContext = createContext();
@@ -22,3 +23,5 @@ export const CountdownProvider = ({ children }) => {
 
 // Custom hook to use the countdown context
 export const useCountdown = () => useContext(CountdownContext);
+
+CountdownProvider.propTypes = { children: PropTypes.node.isRequired };

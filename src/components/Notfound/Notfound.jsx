@@ -1,4 +1,3 @@
-import React from 'react'
 import notfound from '../../assets/images/404 error with person looking for.gif'
 import { Link } from 'react-router-dom'
 

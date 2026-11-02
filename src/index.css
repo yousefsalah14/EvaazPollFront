@@ -116,7 +116,7 @@ body.dark {
 
 @font-face {
     font-family: 'Helvetica Compressed';
-    src: url('./assets/fonts/helvetica-compressed-587d14b6903a.otf') format('opentype');
+    src: url('./assets/fonts/helvetica-compressed-5871d14b6903a.otf') format('opentype');
 }
 
 @font-face {
@@ -133,7 +133,7 @@ body.dark {
 
 @font-face {
     font-family: 'Helvetica Rounded Bold';
-    src: url('./assets/fonts/helvetica-rounded-bold-587d105ead8de.otf') format('opentype');
+    src: url('./assets/fonts/helvetica-rounded-bold-5871d05ead8de.otf') format('opentype');
     font-weight: bold;
 }
 
